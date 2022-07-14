@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            PDF Generator
+        </title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+    <body>
+    <div class="page-container" id="result">
+        <div class="f_heading">
+            <h1>ECE RESULT</h1>
+        </div>
+        <div class="s_heading">
+            <h2>Artificial Intelligence</h2>
+        </div>
+        <table class="table-container">
+            <tr>
+                <th>Student Name</th>
+                <th>Marks Scored</th>
+                <th>Max Marks</th>
+            </tr>
+
+            <tr>
+                <td>Simran</td>
+                <td>80</td>
+                <td>100</td>
+            </tr>
+
+            <tr>
+                <td>Srinidhi</td>
+                <td>85</td>
+                <td>100</td>
+            </tr>
+
+            <tr>
+                <td>anuvart</td>
+                <td>82</td>
+                <td>100</td>
+            </tr>
+        </table>
+        <button class="button" type="submit" onclick="mypdf()">Download as PDF</button>        
+    </div>
+    <script>
+        function mypdf(){
+            var element = document.getElementById('result');
+            var opt = {
+            margin:       1,
+            filename:     'grades.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // New Promise-based usage:-
+            html2pdf().set(opt).from(element).save();
+
+            // // Old monolithic-style usage:
+            // html2pdf(element, opt);
+        }
+    </script>
+    </body>
+</html>
